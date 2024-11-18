@@ -158,7 +158,7 @@
 								<div class="form-group">
 									<label class="col-xs-3 control-label no-padding-right"> Product </label>
 									<div class="col-xs-8">
-										<v-select v-bind:options="products" v-model="selectedProduct" label="display_text" v-on:input="productOnChange"></v-select>
+										<v-select v-bind:options="products" :disabled="isSerial == 'serial' ? true : false" v-model="selectedProduct" label="display_text" v-on:input="productOnChange"></v-select>
 									</div>
 									<div class="col-xs-1" style="padding: 0;">
 										<a href="<?= base_url('product') ?>" class="btn btn-xs btn-danger" style="height: 25px; border: 0; width: 27px; margin-left: -10px;" target="_blank" title="Add New Product"><i class="fa fa-plus" aria-hidden="true" style="margin-top: 5px;"></i></a>
@@ -513,21 +513,6 @@
 			}
 		},
 		watch: {
-			// async serial(serial) {
-			// 	if (serial == undefined) return;
-			// 	this.selectedProduct = this.products.find(item => item.Product_SlNo == serial.ps_prod_id)
-			// 	this.psId = serial.ps_id;
-			// 	this.psSerialNumber = serial.ps_serial_number;
-			// 	this.selectedProduct.quantity = 1;
-			// 	this.selectedProduct.total = parseFloat(this.selectedProduct.Product_SellingPrice) * parseFloat(this.selectedProduct.quantity);
-			// 	this.productStock = await axios.post('/get_product_stock', {
-			// 			productId: serial.ps_prod_id
-			// 		})
-			// 		.then(res => {
-			// 			return res.data;
-			// 		})
-			// 	this.productStockText = this.productStock > 0 ? "Available Stock" : "Stock Unavailable";
-			// },
 			isSerial(item) {
 				this.selectedProduct = {
 					Product_SlNo: '',
